@@ -1,16 +1,16 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo-repo/gke-demo:$SHORT_SHA', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo/gke-demo:$SHORT_SHA', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo-repo/gke-demo:$SHORT_SHA']
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo/gke-demo:$SHORT_SHA']
 
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
     - 'set'
     - 'image'
     - 'deployment/gke-demo'
-    - 'app=us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo-repo/gke-demo:$SHORT_SHA'
+    - 'app=us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo/gke-demo:$SHORT_SHA'
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
     - 'CLOUDSDK_CONTAINER_CLUSTER=gke-demo-cluster'
