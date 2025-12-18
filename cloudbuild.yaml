@@ -12,7 +12,7 @@ steps:
     - 'deployment/gke-demo'
     - 'app=us-central1-docker.pkg.dev/$PROJECT_ID/gke-demo/gke-demo:$SHORT_SHA'
   env:
-    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
     - 'CLOUDSDK_CONTAINER_CLUSTER=gke-demo-cluster'
 
 options:
